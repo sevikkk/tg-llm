@@ -1,0 +1,6 @@
+.ipynb_checkpoints
+data/*.pkl
+key.txt
+my_account.session
+tg_key.txt
+venv
