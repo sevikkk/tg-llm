@@ -34,7 +34,23 @@ async def main():
 
     async with Client("my_account", api_id, api_hash) as app:
         messages = await fetch_messages_in_date_range(app, channel_id, start_date, end_date, offset_id)
-        pickle.dump(messages, open("data/messages.pkl", "wb"))
+        msgs_by_id = {m.id: m for m in messages}
+        tops = {m.reply_to_message_id for m in messages}
+        known_ids = set(msgs_by_id.keys())
+        while True:
+            unknown_ids = tops - known_ids
+            if not unknown_ids:
+                break
+            print(f"fetching {len(unknown_ids)} additional messages {unknown_ids}")
+            new_messages = await app.get_messages(channel_id, message_ids=unknown_ids)
+            print(new_messages and len(new_messages))
+            for msg in new_messages:
+                msgs_by_id[msg.id] = msg
+                if msg.reply_to_message_id:
+                    tops.add(msg.reply_to_message_id)
+                known_ids.add(msg.id)
+
+        pickle.dump({"history": messages, "msgs": msgs_by_id}, open("data/messages.pkl", "wb"))
 
 if __name__ == "__main__":
     asyncio.run(main())
