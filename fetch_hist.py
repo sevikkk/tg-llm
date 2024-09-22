@@ -35,7 +35,7 @@ async def main():
     async with Client("my_account", api_id, api_hash) as app:
         messages = await fetch_messages_in_date_range(app, channel_id, start_date, end_date, offset_id)
         msgs_by_id = {m.id: m for m in messages}
-        tops = {m.reply_to_message_id for m in messages}
+        tops = {m.reply_to_message_id for m in messages if m.reply_to_message_id is not None}
         known_ids = set(msgs_by_id.keys())
         while True:
             unknown_ids = tops - known_ids
