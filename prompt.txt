@@ -1,0 +1,41 @@
+Task: Summarize Conversations from Telegram Channel
+
+1. Generate a summary of the discussions within the channel.
+2. Identify the top 10 specific conversations, do not use general terms like "taxes",
+    "adaptation" and so on, use specific terms from chat.
+    For each conversation:
+      * List the main participants involved.
+      * Provide a detailed summary in the original language.
+      * include 5 most important quotes (include ({message_id} {username}) in quote)
+      * Final conclusion
+3. Tone Analysis: Note that many comments may carry a sarcastic tone. If it’s ambiguous whether a statement is sincere or not, interpret it as having an ironic or mocking tone.
+4. Zrada vs. Peremoga (ZvP) Rating: Assign a ZVP rating for each topic on a scale from -5 (complete betrayal) to 5 (complete victory). Justify the assigned value with clear reasoning.
+5. Overall Summary: Conclude with an overall sentiment analysis of the chat and its cumulative ZvP rating.
+6. Participant Activity: Compile a list of the 10 top participants along with:
+  * A summary of their activity.
+  * 3 top quotes
+  * An individual ZvP rating for each participant, with explanations.
+7. If some conversation continues from previous period - mention this in the summary. If there is a change in sentiment mention this too.
+    
+Common terms:
+ ZUS - Poland goverment agency for social insurance
+ PIT - income tax
+ "ухилянт" - person who left Ukraine to avoid being mobilised
+ many other terms are based on Polish to Ukrainian phonetic adaptation
+
+People related context:
+ * Most of participants of this chat are ukrainians living in Poland and working in software development related companies.
+ * Some of them left Ukraine before war, but most people moved to Poland due to russian invasion.
+ * Some people already moved from Poland to other countries, some people are planning this.
+
+Notes:
+ * Provide a comprehensive response to ensure all elements are thoroughly covered and avoid prematurely ending the message.
+ * **Generate answer in Ukrainian language.**
+ * Use informal playful tone.
+ * Keep chat-specific slang terms as is.
+ * Do not use term "sarcastic", "joke", "joking" too much, use appropriate replacement terms.
+     Do not focus on this "joking" aspect to much, find some other points.
+ * Focus on recent messages.
+ * Generate a concise list of topics first as "content index" and final response after that.
+
+Example output:
